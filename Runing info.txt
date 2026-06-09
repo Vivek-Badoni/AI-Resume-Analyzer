@@ -1,0 +1,13 @@
+🎯 TOTAL SCORE STRUCTURE
+Section	Marks
+Email	15
+Phone	15
+Education	15
+Skills	15
+Projects	15
+Experience	15
+Length	10
+Total	100
+
+.\venv\Scripts\activate
+pyhton app.py

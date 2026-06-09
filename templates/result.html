@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Resume Analysis Result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            margin: 20px auto;
+            width: 60%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        /* Summary Box */
+        .summary-box {
+            margin-bottom: 20px;
+        }
+
+        .grade-badge {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 10px;
+            background: linear-gradient(45deg, #ff9800, #ff5722);
+        }
+
+        .completeness {
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* Skill Score Circle */
+        .circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 20px auto;
+
+            background: conic-gradient(#00ff88 {
+                        {
+                        score
+                    }
+                }
+
+                %, rgba(255, 255, 255, 0.2) {
+                        {
+                        score
+                    }
+                }
+
+                %);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ATS Score Circle */
+        .ats-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 20px auto;
+
+            background: conic-gradient(#00ccff {
+                        {
+                        ats_score
+                    }
+                }
+
+                %, rgba(255, 255, 255, 0.2) {
+                        {
+                        ats_score
+                    }
+                }
+
+                %);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .circle span,
+        .ats-circle span {
+            background: #1f1c2c;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .matched li {
+            background: rgba(0, 255, 0, 0.2);
+        }
+
+        .missing li {
+            background: rgba(255, 0, 0, 0.2);
+        }
+
+        .suggestions li {
+            background: rgba(255, 255, 0, 0.2);
+        }
+
+        .ats-feedback li {
+            background: rgba(0, 204, 255, 0.2);
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: white;
+            color: #764ba2;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background: #ddd;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2> AI Resume Analysis Result</h2>
+
+        <!-- SUMMARY -->
+        <div class="summary-box">
+            <div class="grade-badge">
+                🎖 Grade: {{ grade }}
+            </div>
+
+            <div class="completeness">
+                📊 Resume Completeness: {{ ats_score }}%
+            </div>
+        </div>
+
+        <!-- MAIN SCORE -->
+        <div class="card">
+            <h3>Selected Role: {{ role }}</h3>
+
+            <div class="circle">
+                <span>{{ score }}%</span>
+            </div>
+
+            {% if score >= 75 %}
+            <h3 style="color:#00ff88;">🔥 Excellent Match!</h3>
+            {% elif score >= 50 %}
+            <h3 style="color:#ffcc00;">👍 Good Match</h3>
+            {% else %}
+            <h3 style="color:#ff4d4d;">⚠ Needs Improvement</h3>
+            {% endif %}
+        </div>
+
+        <!-- ATS SCORE -->
+        <div class="card">
+            <h3> ATS Score</h3>
+
+            <div class="ats-circle">
+                <span>{{ ats_score }}%</span>
+            </div>
+
+            <ul class="ats-feedback">
+                {% for feedback in ats_feedback %}
+                <li>{{ feedback }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- MATCHED -->
+        <div class="card matched">
+            <h3> Matched Skills</h3>
+            <ul>
+                {% for skill in matched %}
+                <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- MISSING -->
+        <div class="card missing">
+            <h3> Missing Skills</h3>
+            <ul>
+                {% for skill in missing %}
+                <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- SUGGESTIONS -->
+        <div class="card suggestions">
+            <h3>🤖 AI Suggestions</h3>
+            <ul>
+                {% for s in suggestions %}
+                <li>{{ s }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- BUTTONS -->
+        <a href="/">
+            <button>Analyze Another Resume</button>
+        </a>
+
+        <a href="/download?role={{ role }}&score={{ score }}&ats_score={{ ats_score }}&grade={{ grade }}
+    {% for m in matched %}&matched={{ m }}{% endfor %}
+    {% for m in missing %}&missing={{ m }}{% endfor %}">
+            <button>Download PDF Report</button>
+        </a>
+
+
+    </div>
+
+</body>
+
+</html>
