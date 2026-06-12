@@ -3,3 +3,4 @@ PyPDF2
 python-docx
 Werkzeug
 reportlab
+gunicorn
