@@ -169,6 +169,79 @@
                 display: none;
             }
         }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+
+            body {
+                display: block;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                padding: 15px;
+            }
+
+            .header {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .header h2 {
+                font-size: 22px;
+            }
+
+            .logout-btn {
+                width: 100%;
+                margin-top: 5px;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .card {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .card h1 {
+                font-size: 28px;
+            }
+
+            .chart-container {
+                padding: 12px;
+                overflow-x: auto;
+            }
+
+            canvas {
+                width: 100% !important;
+                height: auto !important;
+            }
+
+            .records-title {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                font-size: 13px;
+            }
+
+            th,
+            td {
+                padding: 8px;
+            }
+        }
     </style>
 </head>
 
@@ -217,29 +290,31 @@
 
         <h2 class="records-title">📁 All Resume Records</h2>
 
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Role</th>
-                <th>Score</th>
-                <th>Matched</th>
-                <th>Missing</th>
-                <th>ATS</th>
-                <th>Date</th>
-            </tr>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Role</th>
+                    <th>Score</th>
+                    <th>Matched</th>
+                    <th>Missing</th>
+                    <th>ATS</th>
+                    <th>Date</th>
+                </tr>
 
-            {% for record in records %}
-            <tr>
-                <td>{{ record[0] }}</td>
-                <td>{{ record[1] }}</td>
-                <td>{{ record[2] }}%</td>
-                <td>{{ record[3] }}</td>
-                <td>{{ record[4] }}</td>
-                <td>{{ record[5] }}%</td>
-                <td>{{ record[6] }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+                {% for record in records %}
+                <tr>
+                    <td>{{ record[0] }}</td>
+                    <td>{{ record[1] }}</td>
+                    <td>{{ record[2] }}%</td>
+                    <td>{{ record[3] }}</td>
+                    <td>{{ record[4] }}</td>
+                    <td>{{ record[5] }}%</td>
+                    <td>{{ record[6] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
 
     </div>
 
