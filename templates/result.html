@@ -23,7 +23,8 @@
             backdrop-filter: blur(20px);
             padding: 30px;
             margin: 20px auto;
-            width: 60%;
+            width: 700px;
+            max-width: 95%;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
@@ -164,9 +165,66 @@
             text-decoration: none;
         }
 
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
+
+            .container {
+                padding: 15px;
+            }
+
             .card {
-                width: 90%;
+                width: 100%;
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            .grade-badge {
+                font-size: 15px;
+                padding: 8px 18px;
+            }
+
+            .completeness {
+                font-size: 15px;
+            }
+
+            .circle {
+                width: 130px;
+                height: 130px;
+            }
+
+            .ats-circle {
+                width: 120px;
+                height: 120px;
+            }
+
+            .circle span,
+            .ats-circle span {
+                width: 85px;
+                height: 85px;
+                font-size: 20px;
+            }
+
+            li {
+                font-size: 14px;
+                word-break: break-word;
+            }
+
+            button {
+                width: 100%;
+                margin-top: 10px;
+                font-size: 15px;
+                padding: 12px;
+            }
+
+            a {
+                display: block;
             }
         }
     </style>
