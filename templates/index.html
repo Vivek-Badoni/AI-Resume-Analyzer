@@ -55,12 +55,15 @@
         }
 
         .box {
+
             background: white;
-            width: 40%;
+            width: 500px;
+            max-width: 95%;
             margin: auto;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
         }
 
         input,
@@ -102,6 +105,49 @@
 
         h2 {
             margin-bottom: 20px;
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+
+            body {
+                padding: 20px;
+                padding-top: 60px;
+            }
+
+            .admin {
+                position: static;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .box {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .ai-badge {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            input,
+            select {
+                width: 100%;
+                margin: 8px 0;
+                font-size: 16px;
+            }
+
+            button {
+                width: 100%;
+                font-size: 16px;
+                padding: 14px;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
