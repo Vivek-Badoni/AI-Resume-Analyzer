@@ -96,6 +96,7 @@ AI-Resume-Analyzer/
 ```
 
 ---
+live: https://ai-resume-analyzer-tguj.onrender.com/
 
 # ⚙️ Installation
 
